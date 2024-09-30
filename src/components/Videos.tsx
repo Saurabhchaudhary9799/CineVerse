@@ -56,13 +56,13 @@ const Videos: React.FC<VideosProps> = ({ movieId }) => {
   if (loading) return <div>Loading videos...</div>;
 
   return (
-    <div className="mb-3">
-      <h2 className="text-3xl font-bold">Videos</h2>
+    <div id="videos" className="mb-5">
+      <h2 className="text-2xl font-bold mb-3">Videos</h2>
       <div className="video-list">
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
           spaceBetween={50}
-          slidesPerView={1}
+          slidesPerView={3}
           navigation
           // loop={true} // Enable infinite looping
           // autoplay={{
@@ -72,9 +72,8 @@ const Videos: React.FC<VideosProps> = ({ movieId }) => {
         >
           {videos?.map((video) => (
             <SwiperSlide key={video.id}>
-              <div className="video-item bg-gray-100 rounded shadow relative h-[600px]">
-                <h3 className="text-2xl">{video.name}</h3>
-                {/* Thumbnail Image */}
+              <div className="video-item bg-gray-100 rounded shadow relative ">
+               
                 <img
                   src={`https://img.youtube.com/vi/${video.key}/maxresdefault.jpg`} // Use maxresdefault.jpg for HD images
                   alt={`Thumbnail for ${video.name}`}

@@ -15,6 +15,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import CircularProgressBar from "./CircularProgressBar";
+import { CiHeart } from "react-icons/ci";
+import Link from "next/link";
 
 interface MovieDetails {
   id: number;
@@ -26,6 +29,7 @@ interface MovieDetails {
   }[];
   poster_path: string;
   release_date: string;
+  vote_average:number;
   [key: string]: any; // You can expand this based on what fields you want to display
 }
 
@@ -90,7 +94,7 @@ const MovieIntro: React.FC<ComponentProps> = ({ movieId }) => {
 
   return (
     <>
-      <div className="movie-intro flex mb-3">
+      <div className="movie-intro flex mb-5">
         <div className="movie-poster w-2/6 ">
           {movieDetails.poster_path && (
             <img
@@ -106,9 +110,10 @@ const MovieIntro: React.FC<ComponentProps> = ({ movieId }) => {
             <h1 className="text-5xl font-bold">{movieDetails.title}</h1>
           </div>
           <div className="flex items-center gap-x-5">
-            <span className="border-4 border-red-600  rounded-full p-2 text-white">
-              {movieDetails.vote_average.toFixed(1)}
-            </span>
+          
+<CircularProgressBar value={parseFloat((movieDetails.vote_average * 10).toFixed(1))} />
+
+            
 
             <div className="flex gap-x-3">
               {movieDetails.genres?.map((genre, i) => (
@@ -126,9 +131,10 @@ const MovieIntro: React.FC<ComponentProps> = ({ movieId }) => {
           </div>
           <div className="flex gap-x-5 items-center">
             <div>
-              <span>Like</span>
+              <span className="text-red-600 text-2xl"><CiHeart/></span>
             </div>
             <div>
+              <Link href="#videos">
               <button className="bg-red-600 text-white flex justify-center items-center gap-x-2 px-2 py-2 rounded">
                 {" "}
                 <span>
@@ -136,6 +142,7 @@ const MovieIntro: React.FC<ComponentProps> = ({ movieId }) => {
                 </span>
                 Watch Now
               </button>
+              </Link>
             </div>
           </div>
 

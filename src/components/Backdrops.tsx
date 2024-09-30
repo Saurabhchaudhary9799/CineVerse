@@ -16,7 +16,7 @@ import "swiper/css/scrollbar";
 
 import axios from "axios";
 import Link from "next/link";
-import { Play } from "lucide-react";
+import { Divide, Play } from "lucide-react";
 
 interface Backdrop {
   
@@ -53,13 +53,13 @@ const Backdrops: React.FC<BackdropProps> = ({ movieId }) => {
   if (loading) return <div>Loading Backdrops...</div>;
 
   return (
-    <div>
-      <h2 className="text-3xl font-bold">BackDrops</h2>
+    <div className="mb-5">
+      <h2 className="text-2xl font-bold mb-3">BackDrops</h2>
       <div className="video-list">
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
           spaceBetween={50}
-          slidesPerView={1}
+          slidesPerView={3}
           navigation
           // loop={true} // Enable infinite looping
           // autoplay={{
@@ -67,9 +67,9 @@ const Backdrops: React.FC<BackdropProps> = ({ movieId }) => {
           //   disableOnInteraction: false, // Continue autoplay after user interaction
           // }}
         >
-          {backdrops?.map((Backdrop,i) => (
+          {backdrops?.length > 0 ? backdrops?.map((Backdrop,i) => (
             <SwiperSlide key={i}>
-              <div className="video-item bg-gray-100 rounded shadow relative h-[600px]">
+              <div className="video-item bg-gray-100 rounded shadow relative ">
                
                 
                 <img
@@ -77,12 +77,12 @@ const Backdrops: React.FC<BackdropProps> = ({ movieId }) => {
                   alt={`${Backdrop.file_path}`}
                   width={1600}
                   height={900}
-                  className="mt-2 w-full rounded object-top"
+                  className="mt-2 w-full  rounded object-top"
                 />
 
               </div>
             </SwiperSlide>
-          ))}
+          )) : (<div>There is no backdrops</div>)}
         </Swiper>
       </div>
     </div>

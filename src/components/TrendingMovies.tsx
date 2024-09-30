@@ -17,6 +17,7 @@ import Image from "next/image";
 import useGenres from "@/hooks/useGenre";
 import { Pause, Play } from "lucide-react";
 import Link from "next/link";
+import CircularProgressBar from "./CircularProgressBar";
 
 
 interface Movie {
@@ -101,9 +102,7 @@ const TrendingMovies = () => {
                   </h1>
                 </div>
                 <div className="flex items-center gap-x-5">
-                  <span className="border-4 border-white rounded-full p-2 text-white">
-                    {movie.vote_average.toFixed(1)}
-                  </span>
+                <CircularProgressBar value={parseFloat((movie.vote_average * 10).toFixed(1))} />
                   
                   <div className="flex gap-x-3">
                     {getGenreNames(movie.genre_ids).split(", ").map((genre, index) => (
