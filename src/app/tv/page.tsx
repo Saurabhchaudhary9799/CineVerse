@@ -17,6 +17,7 @@ import {
 import usePopularSeries from "@/hooks/usePopularSeries";
 import useTopRatedSeries from "@/hooks/useTopRatedSeries";
 import TrendingSeries from "@/components/TrendingSeries";
+import Link from "next/link";
 
 const Page = () => {
   const [currentPage, setCurrentPage] = useState(1); // State for the current page
@@ -70,6 +71,7 @@ const Page = () => {
             <p>Loading...</p>
           ) : current === "popular" ? (
             popularSeries?.map((movie) => (
+              <Link href={`/tv/${movie.id}`}>
               <div key={movie.id} className="card relative group">
                 {movie.backdrop_path && (
                   <Image
@@ -91,9 +93,11 @@ const Page = () => {
                   </h1>
                 </div>
               </div>
+              </Link>
             ))
           ) : (
             topRatedSeries?.map((movie) => (
+              <Link href={`/tv/${movie.id}`}>
               <div key={movie.id} className="card relative group">
                 {movie.backdrop_path && (
                   <Image
@@ -115,6 +119,7 @@ const Page = () => {
                   </h1>
                 </div>
               </div>
+              </Link>
             ))
           )}
         </div>

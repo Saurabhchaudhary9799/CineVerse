@@ -16,6 +16,7 @@ import "swiper/css/scrollbar";
 import Image from "next/image";
 import useGenres from "@/hooks/useGenre";
 import { Pause, Play } from "lucide-react";
+import Link from "next/link";
 
 
 interface Movie {
@@ -120,6 +121,7 @@ const TrendingSeries = () => {
                   </p>
                 </div>
                 <div>
+                  <Link href={`/tv/${movie.id}`}></Link>
                   <button className="py-2 px-4 bg-red-600 text-white flex items-center gap-x-2 rounded">
                     <span><Play/></span>Watch Now
                   </button>

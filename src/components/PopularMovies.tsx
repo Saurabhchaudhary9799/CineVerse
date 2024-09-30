@@ -15,6 +15,7 @@ import "swiper/css/scrollbar";
 import Image from "next/image";
 import useGenres from "@/hooks/useGenre";
 import { Pause, Play } from "lucide-react";
+import Link from "next/link";
 
 interface Movie {
   id: number;
@@ -81,6 +82,7 @@ const PopularMovies = () => {
       >
         {nowPlaying?.map((movie) => (
           <SwiperSlide key={movie.id}>
+            <Link href={`/movie/${movie.id}`}>
             <div className=" card w-full h-full group relative">
               {movie.backdrop_path && (
                 <Image
@@ -98,6 +100,7 @@ const PopularMovies = () => {
                    <h1 className="text-lg font-bold text-white">{movie.original_title}</h1>
               </div>
             </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
