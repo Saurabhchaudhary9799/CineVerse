@@ -87,11 +87,12 @@ const TopRatedSeries = () => {
                 <Image
                   src={`${baseUrl}${movie.backdrop_path}`}
                   alt={movie.name}
-                  layout="responsive" // Fill the parent container
-                  objectFit="cover"
+                  
+                  
                   width={1600}
                   height={900} // Maintain aspect ratio
                   className="w-full h-full border"
+                  priority
                 />
               )}
               <div className=" info hidden group-hover:flex flex-col justify-center items-center absolute inset-0  w-full h-full z-50    gap-y-3 transition-all duration-300 ease-in bg-transparent ">

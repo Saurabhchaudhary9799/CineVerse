@@ -91,11 +91,12 @@ const NowPlaying = () => {
                       ? movie.original_name
                       : movie.original_title
                   }`}
-                  layout="responsive" // Fill the parent container
-                  objectFit="cover"
+                   // Fill the parent container
+                  
                   width={1600}
                   height={900} // Maintain aspect ratio
                   className="w-full h-full "
+                  priority
                 />
               )}
               <div className="absolute inset-0  w-full h-full z-10 flex flex-col gap-y-5 items-start justify-center pl-16">

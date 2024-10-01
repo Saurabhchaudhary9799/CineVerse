@@ -88,11 +88,12 @@ const TrendingSeries = () => {
                 <Image
                   src={`${baseUrl}${movie.backdrop_path}`}
                   alt={movie.original_name}
-                  layout="responsive" // Fill the parent container
-                  objectFit="cover"
+                  
+                  
                   width={1600}
                   height={900} // Maintain aspect ratio
                   className="w-full h-full "
+                  priority
                 />
               )}
               <div className="absolute inset-0  w-full h-full z-10 flex flex-col gap-y-5 items-start justify-center pl-16">
